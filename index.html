@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Filtering/filter.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" href="time.png" type="image/x-icon">
+    <title>Task Manager</title>
+
+</head>
+<body>
+    
+    <button id="addBtn">
+        <i class="fas fa-plus"></i>
+        Add Note
+    </button>
+    
+    <div class="container">
+		<div class="sidebar">
+			<h2 class="animate__animate">Task Manager</h2>
+			<div class="filter">
+				<h3>Category Filter</h3>
+				<div id="btns"></div>
+                <div class="footer">
+                    <p>Created by <a href="https://github.com/harmanjot2002" target="_blank">Harmanjot Kaur</a></p>
+                </div>
+			</div>
+		</div>
+	</div> 
+
+    <div class="search_wrap search_wrap_3">
+        <div class="search_box">
+            <input type="text" onblur="search()" class="input" id="searchInput" autocomplete="off" placeholder="Search Title...">
+            <div onclick="search()" id="search" class="btn btn_common">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </div>
+
+    <select onchange="sortDate()" name="" id="date_cat">
+        <option disabled selected>Deadlines</option>
+        <option value="0">Default</option>
+        <option value="asc">Upcoming</option>
+        <option value="desc">Furthest</option>
+    </select>
+
+    <div id="main"></div>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/f5ebec6b76.js" crossorigin="anonymous"></script>
+    <script src="Filtering/filter.js"></script>
+</body>
+</html>
