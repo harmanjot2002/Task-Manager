@@ -68,7 +68,7 @@ const displayItem = (items) => {
             `
             <div class="card">
                 <div class="icons">
-                <input onchange="handleCheckBox()" type="checkbox" class="complete">
+                    <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
                     <input type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add catgory" id="category" value=${category ? category : str}>
                     <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
                     <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 

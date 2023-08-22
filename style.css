@@ -75,11 +75,6 @@ body{
     border-radius: 50px;
 }
 
-/* .search_wrap.search_wrap_3 .search_box .btn{
-	right: -9px;
-	border-radius: 50%;
-} */
-
 #addBtn {
     width:100px;
     position: fixed; 
@@ -166,34 +161,6 @@ select{
     padding: 5px;
     cursor: pointer;
 }
-
-/*
-ul li{
-    list-style:none;
-    padding:8px 0 3px 12px;
-    user-select:none;
-    cursor:pointer; 
-    position: relative;
-}
-ul li::before{
-    content:'';
-    position: absolute;
-    height:13px;
-    width:13px;
-    border-radius:50%;
-    background-image: url(unchecked.png);
-    background-size: cover;
-    background-position: center;
-}
-ul li.checked{
-    color: #555;
-    text-decoration: line-through;
-}
-ul .i.checked::before{
-    background-image: url(checked.png);
-}
-*/
-
 
 #title{
     width:100%;

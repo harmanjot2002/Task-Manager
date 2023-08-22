@@ -54,7 +54,7 @@ const sortDate = () => {
             `
             <div class="card">
                 <div class="icons">
-                    <input onchange="handleCheckBox()" type="checkbox" class="complete">
+                    <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
                     <input type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add catgory" id="category" value=${category ? category : str}>
                     <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
                     <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 
@@ -103,6 +103,7 @@ const saveNotes = (c,t,d,dt) => {
         value=5;
     }
     const note = {
+        isChecked:false,
         id:c,
         title:titles,
         desc:notes,
@@ -118,19 +119,32 @@ const saveNotes = (c,t,d,dt) => {
     localStorage.setItem("mynotes",JSON.stringify(data));
 }
 
-handleCheckBox=()=>{
-    const val = document.querySelector(".complete").checked;
-    const cat=document.querySelector(".category");
-    if(val){
-        cat.style.textDecoration="line-through 3px var(--main-bg)";
+const handleCheckBox = (e,ind)=>{
+    const checked = e.target.checked;
+    const p = (e.target.parentElement);
+    const nodes = p.querySelectorAll("input")[1];
+    const data = JSON.parse(localStorage.getItem("mynotes")) || [];
+    const findIndex = data.findIndex((item)=>item.id === ind);
+    console.log(findIndex);
+    if(checked){
+        nodes.style.textDecoration = "line-through 3px var(--main-bg)";
+        data[findIndex] = {
+            ...data[findIndex],
+            isChecked:true
+        }
     }
     else{
-        cat.style.textDecoration="none";
+        nodes.style.textDecoration = "none";
+        data[findIndex] = {
+            ...data[findIndex],
+            isChecked:false
+        }
     }
+    localStorage.setItem("mynotes",JSON.stringify(data));
 }
 
-const addNote = (category,title,desc,ind,date) => {
-    // console.log("inde xhai ye " ,ind);
+const addNote = (category,title,desc,ind,date,ischeck) => {
+    // console.log("inde xhai ye " ,ischeck);
     const note = document.createElement("div");
     note.classList.add("card") //We have made a div with classname "card"
     const data = JSON.parse(localStorage.getItem("mynotes")) || [];
@@ -141,7 +155,7 @@ const addNote = (category,title,desc,ind,date) => {
     const str = "";
     note.innerHTML = ` 
     <div class="icons">
-        <input onchange="handleCheckBox(${num})" type="checkbox" class="complete">
+        <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
        <input type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add category" id="category" value=${category ? category : str}>
         <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
         <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 
@@ -171,7 +185,7 @@ const deleteNotes = (num)=>{
         if(mynotes !== null && mynotes.length !== 0){
             console.log(mynotes);
             mynotes.map((item)=>(
-                addNote(item.category,item.title,item.desc,item.id,item.date)
+                addNote(item.category,item.title,item.desc,item.id,item.date,item.isChecked)
             ))
         }
     }
