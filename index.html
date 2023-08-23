@@ -7,16 +7,32 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="icon" href="time.png" type="image/x-icon">
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/index.global.min.js'></script>
     <title>Task Manager</title>
+    <script>
 
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+          });
+          calendar.render();
+        });
+  
+      </script>
 </head>
 <body>
-    
+    <div class="contain" id="blur">
     <button id="addBtn">
         <i class="fas fa-plus"></i>
-        Add Note
+        Add Task
     </button>
-    
+    <button id="viewBtn" onclick="toggle()">
+        <i class="fas fa-calendar-week"></i>
+        View Task
+    </button>
+
     <div class="container">
 		<div class="sidebar">
 			<h2 class="animate__animate">Task Manager</h2>
@@ -47,7 +63,14 @@
     </select>
 
     <div id="main"></div>
+    </div>
 
+    <div id="popup">
+        <div class="cal-container">
+            <div id='calendar'></div>
+        </div>
+        <div class="con"><a href="#" onclick="toggle()">Close</a></div>
+    </div>
     <script src="script.js"></script>
     <script src="Filtering/filter.js"></script>
     <script src="https://kit.fontawesome.com/f5ebec6b76.js" crossorigin="anonymous"></script>
