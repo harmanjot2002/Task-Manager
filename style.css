@@ -123,7 +123,9 @@ body{
 }
 #viewBtn:hover,
 #addBtn:hover{
-    outline: 2px solid #838a8a;
+    /* outline: 2px solid #838a8a; */
+    transform: scale(1.03);
+    box-shadow: 0 8px 50px rgba(0,0,0,0.2);
 }
 select{
     margin: -35px 850px;
@@ -149,6 +151,9 @@ select{
     margin-top: 75px;
     box-shadow:0 0 7px rgba(0,0,0,0.15);
     transition: 0.2s all;
+}
+.card textarea{
+    border-radius:4%;
 }
 .card:hover{
     box-shadow: 0 8px 50px rgba(0,0,0,0.2);
