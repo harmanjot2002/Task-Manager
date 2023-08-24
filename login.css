@@ -6,7 +6,8 @@
     box-sizing: border-box;
 }
 :root{
-    --main-bg: #11b090;
+    /* --main-bg: #11b090; */
+    --main-bg: #ffbf9b;
     --sec-bg: #455053;
     --danger:red;
 }
@@ -42,7 +43,8 @@ body{
         background: var(--main-bg);
     }
     90%{
-        background: #2c4766;
+        background: #bd551d;
+        /* background: #2c4766; */
     }
 }
 .login-box{
@@ -89,7 +91,8 @@ h2{
     width: 100%;
     height: 50px;
     background: transparent;
-    border: 2px solid #3c4b50;
+    /* border: 2px solid #3c4b50; */
+    border:2px solid #887265;
     outline: none;
     border-radius: 40px;
     font-size: 1em;

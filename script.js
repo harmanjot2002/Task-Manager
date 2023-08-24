@@ -117,6 +117,7 @@ const saveNotes = (c,t,d,dt) => {
     data.push(note);
     // console.log(data);
     localStorage.setItem("mynotes",JSON.stringify(data));
+
 }
 
 const handleCheckBox = (e,ind)=>{
@@ -167,6 +168,13 @@ const addNote = (category,title,desc,ind,date,ischeck) => {
     </div>
     `; //HTML to be implemented inside "card" class
     main.appendChild(note);
+    
+    draw(data.map(obj=>{
+        return{
+            title:obj.title,
+            start:obj.date
+        }
+      }))
 }
 
 const deleteNotes = (num)=>{
@@ -198,3 +206,28 @@ function toggle() {
     var popup = document.getElementById('popup');
     popup.classList.toggle('active');
 }
+// document.addEventListener('DOMContentLoaded', function() {
+//     var calendarEl = document.getElementById('calendar');
+//     var calendar = new FullCalendar.Calendar(calendarEl, {
+//       initialView: 'dayGridMonth'
+//     });
+//     calendar.render();
+//   });
+  function draw(data){
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+    //   headerToolbar: {
+    //     left: 'prev,next today',
+    //     center: 'title',
+    //     right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    //   },
+      events:data
+    });
+    calendar.render();
+  }
+  
+ function addEvent(event)
+ {
+    calendar.addEvent(event);
+ }
