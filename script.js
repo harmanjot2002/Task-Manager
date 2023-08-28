@@ -1,7 +1,6 @@
 const btn = document.querySelector("#addBtn")
 const main = document.querySelector("#main")
 const searchInputField = document.querySelector('#search');
-// const completed=document.querySelector('#list-container');
 
 function search(e){
     const query = document.getElementById("searchInput").value;
@@ -206,22 +205,10 @@ function toggle() {
     var popup = document.getElementById('popup');
     popup.classList.toggle('active');
 }
-// document.addEventListener('DOMContentLoaded', function() {
-//     var calendarEl = document.getElementById('calendar');
-//     var calendar = new FullCalendar.Calendar(calendarEl, {
-//       initialView: 'dayGridMonth'
-//     });
-//     calendar.render();
-//   });
   function draw(data){
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-    //   headerToolbar: {
-    //     left: 'prev,next today',
-    //     center: 'title',
-    //     right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    //   },
       events:data
     });
     calendar.render();
