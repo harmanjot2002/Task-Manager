@@ -24,8 +24,6 @@ const sortDate = () => {
     const date_cat = document.querySelector("#date_cat").value;
     console.log(date_cat);
     const mynotes = JSON.parse(localStorage.getItem("mynotes")) || [];
-    // const tbody = document.querySelector("tbody");
-    // tbody.innerHTML = "";
     let newData;
     if (date_cat === "0") {
         window.location.reload();
