@@ -42,7 +42,8 @@
 .filter-btns:hover{
 	font-weight: bold;
 	background-position: left bottom;
-	color: var(--main-bg);
+	color: #f89962;
+	/* color: var(--main-bg); */
 }
 button{
 	width: 100%;
