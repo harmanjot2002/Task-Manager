@@ -166,12 +166,13 @@ const addNote = (category,title,desc,ind,date,ischeck) => {
     `; //HTML to be implemented inside "card" class
     main.appendChild(note);
     
+    //responsible for displaying events on a calendar. draw() receives an array of event objects as an argument.
     draw(data.map(obj=>{
         return{
             title:obj.title,
             start:obj.date
         }
-      }))
+    }))
 }
 
 const deleteNotes = (num)=>{
