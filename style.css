@@ -135,7 +135,7 @@ body{
     width:100px;
     position: absolute; 
     right: 10px;
-    top: 10px;
+    top: 15px;
     background-color: var(--sec-bg); 
     color: white; 
     padding: 5px;
@@ -165,7 +165,7 @@ body{
     width:110px;
     position: absolute; 
     right: 150px;
-    top: 10px;
+    top: 15px;
     background-color: var(--sec-bg); 
     color: white; 
     padding: 5px;
@@ -182,7 +182,7 @@ body{
     box-shadow: 0 8px 50px rgba(0,0,0,0.2);
 }
 select{
-    margin: 8px 850px;
+    margin: 14px 850px;
     padding: 0.2rem;
     height:2.2rem;
     position:absolute;
