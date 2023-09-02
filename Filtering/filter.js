@@ -57,7 +57,7 @@ const filterItems = (a)=>{
     
 const displayItem = (items) => {
     document.getElementById('main').innerHTML = items.map((item)=>{
-        var {category,title,desc,ind,date,ischeck} = item;
+        var {category,title,desc,ind,date,time,ischeck} = item;
         const data = JSON.parse(localStorage.getItem("mynotes")) || [];
         let num = "";
         if(ind !== undefined) num = ind;
@@ -70,13 +70,14 @@ const displayItem = (items) => {
                 <div class="icons">
                     <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
                     <input style="${ischeck ? "text-decoration:line-through 3px var(--main-bg)" : "text-decoration:none" }" type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add category" id="category" value=${category ? category : str}>
-                    <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
+                    <i onclick="saveNotes(${num},${num},${num},${num},${num})" class="save fas fa-save"></i>
                     <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 
                 </div>
                 <input id="title" autocomplete="off" type="text" class=${"title"+num} placeholder="Add title" value=${title ? title : str}>
                 <textarea id="desc" value=${desc} class=${"desc"+num} placeholder="Description">${desc ? desc : ""}</textarea>
                 <div class="entry">
                     <input type="date" class="${"date"+num} date" value=${date}></input>
+                    <input type="time" class="${"time"+num} time" value=${time}></input>
                 </div>
             </div>
             `

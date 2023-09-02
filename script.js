@@ -81,7 +81,7 @@ const sortDate = () => {
         });
     }
     document.getElementById('main').innerHTML = newData.map((item)=>{
-        var {category,title,desc,ind,date,ischeck} = item;
+        var {category,title,desc,ind,date,time,ischeck} = item;
         const data = JSON.parse(localStorage.getItem("mynotes")) || [];
         let num = "";
         if(ind !== undefined) num = ind;
@@ -94,13 +94,14 @@ const sortDate = () => {
                 <div class="icons">
                     <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
                     <input style="${ischeck ? "text-decoration:line-through 3px var(--main-bg)" : "text-decoration:none" }" type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add category" id="category" value=${category ? category : str}>
-                    <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
+                    <i onclick="saveNotes(${num},${num},${num},${num},${num})" class="save fas fa-save"></i>
                     <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 
                 </div>
                 <input id="title" autocomplete="off" type="text" class=${"title"+num} placeholder="Add title" value=${title ? title : str}>
                 <textarea id="desc" value=${desc} class=${"desc"+num} placeholder="Description">${desc ? desc : ""}</textarea>
                 <div class="entry">
                     <input type="date" class="${"date"+num} date" value=${date}></input>
+                    <input type="time" class="${"time"+num} time" value=${time}></input>
                 </div>
             </div>
             `
@@ -108,18 +109,23 @@ const sortDate = () => {
     }).join('');
 }
 
-const saveNotes = (c,t,d,dt) => {
+const saveNotes = (c,t,d,dt,tt) => {
     // console.log("save notes index ki value ",c , " t " , t , " d " , d);
     const notes = document.querySelector(".desc"+d).value;
     const titles=document.querySelector(".title"+t).value;
     const categ=document.querySelector(".category"+c).value;
     const date = document.querySelector(".date"+dt).value;
+    const time = document.querySelector(".time"+tt).value;
     if (categ === "" || titles === "") {
         alert("Please fill all the fields");
         return;
     }
     if (date === "") {
         alert("Please select a Due date");
+        return;
+    }
+    if (time === "") {
+        alert("Please select Time");
         return;
     }
     // console.log("notes value ",notes);
@@ -148,7 +154,8 @@ const saveNotes = (c,t,d,dt) => {
         category:categ,
         ref:value,
         same:"9",
-        date:date
+        date:date,
+        time:time
     }
     // console.log(note);
     const data =JSON.parse(localStorage.getItem("mynotes")) || [];
@@ -182,7 +189,7 @@ const handleCheckBox = (e,ind)=>{
     localStorage.setItem("mynotes",JSON.stringify(data));
 }
 
-const addNote = (category,title,desc,ind,date,ischeck) => {
+const addNote = (category,title,desc,ind,date,time,ischeck) => {
     // console.log("inde xhai ye " ,ischeck);
     const note = document.createElement("div");
     note.classList.add("card") //We have made a div with classname "card"
@@ -196,13 +203,14 @@ const addNote = (category,title,desc,ind,date,ischeck) => {
     <div class="icons">
         <input onchange="handleCheckBox(event,${num})" type="checkbox" class=" ${"complete"+num} complete" id="ci" ${ischeck && "checked"} >
         <input style="${ischeck ? "text-decoration:line-through 3px var(--main-bg)" : "text-decoration:none" }" type="text" autocomplete="off" class="${"category"+num} category" placeholder="Add category" id="category" value=${category ? category : str}>
-        <i onclick="saveNotes(${num},${num},${num},${num})" class="save fas fa-save"></i>
+        <i onclick="saveNotes(${num},${num},${num},${num},${num})" class="save fas fa-save"></i>
         <i onclick="deleteNotes(${num})" class="trash fas fa-trash"></i> 
     </div>
     <input id="title" autocomplete="off" type="text" class=${"title"+num} placeholder="Add title" value=${title ? title : str}>
     <textarea id="desc" value=${desc} class=${"desc"+num} placeholder="Description">${desc ? desc : ""}</textarea>
     <div class="entry">
         <input type="date" class="${"date"+num} date" value=${date}></input>
+        <input type="time" class="${"time"+num} time" value=${time}></input>
     </div>
     `; //HTML to be implemented inside "card" class
     main.appendChild(note);
@@ -232,7 +240,7 @@ const deleteNotes = (num)=>{
         if(mynotes !== null && mynotes.length !== 0){
             console.log(mynotes);
             mynotes.map((item)=>(
-                addNote(item.category,item.title,item.desc,item.id,item.date,item.isChecked)
+                addNote(item.category,item.title,item.desc,item.id,item.date,item.time,item.isChecked)
             ))
         }
     }
