@@ -1,6 +1,7 @@
 const btn = document.querySelector("#addBtn")
 const main = document.querySelector("#main")
 const searchInputField = document.querySelector('#search');
+var ans;
 
 function search(e){
     const query = document.getElementById("searchInput").value;
@@ -162,7 +163,11 @@ const saveNotes = (c,t,d,dt,tt) => {
     data.push(note);
     // console.log(data);
     localStorage.setItem("mynotes",JSON.stringify(data));
-
+    const response = confirm("Do you want to mark this task as everyday?");
+    console.log(response);
+    // if(response === true){
+        
+    // }
 }
 
 const handleCheckBox = (e,ind)=>{
