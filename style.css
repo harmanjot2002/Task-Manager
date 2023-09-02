@@ -11,6 +11,10 @@
     --main-bg: #ffbf9b;
     --sec-bg: #455053;
 }
+/* .dark-mode {
+    --main-bg: #455053;
+    --sec-bg:  #ffbf9b;
+} */
 ::-webkit-scrollbar{
     width: 15px;
 }
