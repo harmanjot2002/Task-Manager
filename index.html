@@ -35,19 +35,16 @@
 		</div>
 	</div> 
 
-    <!-- <div class="search_wrap search_wrap_3">
-        <div class="search_box">
-            <input type="text" onblur="search()" class="input" id="searchInput" autocomplete="off" placeholder="Search Title...">
-            <div onclick="search()" id="search" class="btn btn_common">
-                <i class="fas fa-search"></i>
-            </div>
-        </div>
-    </div> -->
-
     <div class="searchBox">
-        <input class="searchInput" id="searchInput" onkeyup="search()" type="text" name="" placeholder="Search Title..." autocomplete="off">
+        <input class="searchInput" id="searchInput" onkeyup="search()" type="text" name="" placeholder="Search Title by Text" autocomplete="off">
         <button onclick="search()" class="searchButton" href="#">
             <i class="fas fa-search"></i>
+        </button>
+    </div>
+    <div class="searchBox2">
+        <input class="searchInput2" id="searchInput2" type="text" name="" placeholder="Search Title by Voice" autocomplete="off">
+        <button onclick="startAudioTyping()" class="searchButton2" id="voiceSearch" href="#">
+            <i class="fas fa-microphone"></i>
         </button>
     </div>
 

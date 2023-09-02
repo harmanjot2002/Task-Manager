@@ -8,11 +8,52 @@ function search(e){
     const mynotes = JSON.parse(localStorage.getItem("mynotes")) || [];
     // console.log(mynotes);
     const searchedItems = mynotes.filter((item)=>(
-        item.title.toLowerCase().includes(query)
+        item.title.toLowerCase().includes(query.toLowerCase())
     ))
     // console.log(searchedItems);
     displayItem(searchedItems);
 }
+function search2(e){
+    const query = document.getElementById("searchInput2").value;
+    // console.log(query);
+    const mynotes = JSON.parse(localStorage.getItem("mynotes")) || [];
+    // console.log(mynotes);
+    const searchedItems = mynotes.filter((item)=>(
+        item.title.toLowerCase().includes(query.toLowerCase())
+    ))
+    // console.log(searchedItems);
+    displayItem(searchedItems);
+}
+
+function startAudioTyping(){
+    const recognition=new webkitSpeechRecognition();
+    const startButton=document.getElementById("voiceSearch");
+    if("webkitSpeechRecognition" in window){
+        recognition.continuous=false;
+        recognition.interimResults=true;
+        recognition.lang="en-US";
+    
+        startButton.addEventListener("click",()=>{
+            recognition.start();
+        });
+    
+        recognition.onresult=(event)=>{
+            const transcript=event.results[0][0].transcript;
+            document.querySelector("#searchInput2").value=transcript;
+        
+            search2();
+        };
+    
+        recognition.onerror=(event)=>{
+            console.error("Recognition error:",event.error);
+        };
+    }
+    else{
+        console.log("Web Speech API is not supported in this browser");
+    }
+}
+startAudioTyping();
+
 
 btn.addEventListener(
     "click",function() {
