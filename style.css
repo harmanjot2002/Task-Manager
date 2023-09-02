@@ -403,3 +403,6 @@ select{
 .fc-today-button{
     width:40%;
 }
+.fc-event-time,.fc-event-title{
+    font-size:smaller;
+}

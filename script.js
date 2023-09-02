@@ -219,7 +219,7 @@ const addNote = (category,title,desc,ind,date,time,ischeck) => {
     draw(data.map(obj=>{
         return{
             title:obj.title,
-            start:obj.date
+            start:`${obj.date}T${obj.time}`
         }
     }))
 }
@@ -257,7 +257,13 @@ function toggle() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      events:data
+      events:data,
+      eventTimeFormat:{
+        hour:'numeric',
+        minute:'2-digit',
+        omitZeroMinute:false,
+        meridiem:'short' //am,pm
+      }
     });
     calendar.render();
   }
